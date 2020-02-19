@@ -28,3 +28,6 @@ hs_err_pid*
 out/
 *.iml
 *.ipr
+
+.gitignore
+.gitattributes
