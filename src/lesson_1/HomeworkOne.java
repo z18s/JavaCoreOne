@@ -1,7 +1,8 @@
 package lesson_1;
 
-public class HomeWorkOne {
+public class HomeworkOne {
     public static void main(String[] args) {
+        // 2
         byte bt = 100;
         short srt = 30000;
         int i = 35000;
@@ -12,29 +13,35 @@ public class HomeWorkOne {
         boolean bln = true;
         String str = "Hey, Java!";
 
+        // 3
         System.out.println(task3(bt, srt, lng, flt));
         // 100 * (30 000 + (-999 / 9.99))
         System.out.println();
 
+        // 4
         System.out.println(task4(2, 3));
         System.out.println(task4(5, 9));
         System.out.println(task4(8, 15));
         System.out.println();
 
+        // 5
         task5(-55);
         task5(i);
         System.out.println();
 
+        // 6
         int a = -88;
         int b = 19;
         System.out.println(a + " < 0 is " + task6(a));
         System.out.println(b + " < 0 is " + task6(b));
         System.out.println();
 
+        // 7
         String name = "UserName";
         task7(name);
         System.out.println();
 
+        // 8*
         int year = 1500;
         System.out.println(year + " " + task8(year) + " leap year");
         year = 1600;
@@ -44,6 +51,7 @@ public class HomeWorkOne {
         year = 1699;
         System.out.println(year + " " + task8(year) + " leap year");
     }
+
 
     public static float task3(byte a, short b, long c, float d) {
         return a * (b + (c / d));
