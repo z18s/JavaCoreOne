@@ -54,23 +54,26 @@ public class HomeworkOne {
 
 
     public static float task3(byte a, short b, long c, float d) {
-        return a * (b + (c / d));
+//        return a * (b + (c / d));
+        return (d != 0) ? a * (b + (c / d)) : 0;
     }
 
     public static boolean task4(int a, int b) {
-        if ((a + b >= 10) && (a + b <= 20)) {
-            return true;
-        } else {
-            return false;
-        }
+//        if ((a + b >= 10) && (a + b <= 20)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return (a + b >= 10) && (a + b <= 20);
     }
 
     public static void task5(int a) {
-        if (a >= 0) {
-            System.out.println("Number " + a + " is positive");
-        } else {
-            System.out.println("Number " + a + " is negative");
-        }
+//        if (a >= 0) {
+//            System.out.println("Number " + a + " is positive");
+//        } else {
+//            System.out.println("Number " + a + " is negative");
+//        }
+        System.out.println("Number " + a + " is " + ((a >= 0) ? "positive" : "negative"));
     }
 
     public static boolean task6(int a) {
@@ -82,10 +85,11 @@ public class HomeworkOne {
     }
 
     public static String task8(int year) {
-        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
-            return "is";
-        } else {
-            return "isn't";
-        }
+//        if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
+//            return "is";
+//        } else {
+//            return "isn't";
+//        }
+        return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? "is" : "isn't";
     }
 }
