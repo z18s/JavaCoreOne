@@ -1,0 +1,3 @@
+# JavaCoreOne
+
+Java Core. Basic
