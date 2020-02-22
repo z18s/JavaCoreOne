@@ -1,3 +1,1 @@
-# JavaCoreOne
-
-Java Core. Basic
+# Java Core. Basic
