@@ -27,7 +27,7 @@ public class HomeworkTwo {
         int[] arr3 = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
         System.out.println(Arrays.toString(arr3));
         for (int i = 0; i < arr3.length; i++) {
-            arr3[i] = (arr3[i] < 6) ? arr3[i] * 2 : arr3[i];
+            arr3[i] *= (arr3[i] < 6) ? 2 : 1;
         }
         System.out.println(Arrays.toString(arr3));
         System.out.println();
@@ -40,6 +40,7 @@ public class HomeworkTwo {
         }
         for (int i = 0; i < ARR4_SIZE; i++) {
             arr4[i][i] = 1;
+            arr4[i][ARR4_SIZE - 1 - i] = 1;
         }
         System.out.println();
         for (int[] ints : arr4) {
@@ -62,7 +63,8 @@ public class HomeworkTwo {
         // 6
         int[] arr6 = {2, 3, 4, 1, 2, 1, 2, 3};
         System.out.println(Arrays.toString(arr6));
-        boolean isBalance = task6(arr6);
+        // v.1
+        boolean isBalance = task6v1(arr6);
         System.out.println(isBalance);
         if (isBalance) {
             for (int i = 0; i < balancePoint; i++) {
@@ -74,23 +76,26 @@ public class HomeworkTwo {
             }
         }
         System.out.println();
+        // v.2
+        isBalance = task6v2(arr6);
+        System.out.println(isBalance);
         System.out.println();
 
         // 7
         int[] arr7 = {2, 6, 3, 7, 9, 8, 1};
         int n = 3;
         System.out.println(Arrays.toString(arr7));
-        // v.2
-        System.out.println(Arrays.toString(task7v2(arr7, n)));
         // v.1
-        task7v1(arr7, n);
+        System.out.println(Arrays.toString(task7v1(arr7, n)));
+        // v.2
+        task7v2(arr7, n);
         System.out.println(Arrays.toString(arr7));
         System.out.println();
     }
 
     static int balancePoint;
 
-    public static boolean task6(int[] arr) {
+    public static boolean task6v1(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int sum1 = 0, sum2 = 0;
             for (int j = 0; j < i; j++) {
@@ -107,7 +112,34 @@ public class HomeworkTwo {
         return false;
     }
 
-    public static void task7v1(int[] arr, int hop) {
+    public static boolean task6v2(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        int sumTemp = 0;
+        for (int j = 0; j < arr.length; j++) {
+            sumTemp += arr[j];
+            if (sumTemp == sum / 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static int[] task7v1(int[] arr, int hop) {
+        int[] arrModified = new int[arr.length];
+        for (int i = 0, j = hop; i < arr.length; i++, j++) {
+            j = j % arr.length;
+            if (j < 0) {
+                j += arr.length;
+            }
+            arrModified[j] = arr[i];
+        }
+        return arrModified;
+    }
+
+    public static void task7v2(int[] arr, int hop) {
         hop = hop % arr.length;
         if (hop < 0) {
             hop += arr.length;
@@ -119,17 +151,5 @@ public class HomeworkTwo {
             }
             arr[0] = tmp;
         }
-    }
-
-    public static int[] task7v2(int[] arr, int hop) {
-        int[] arrModified = new int[arr.length];
-        for (int i = 0, j = hop; i < arr.length; i++, j++) {
-            j = j % arr.length;
-            if (j < 0) {
-                j += arr.length;
-            }
-            arrModified[j] = arr[i];
-        }
-        return arrModified;
     }
 }
