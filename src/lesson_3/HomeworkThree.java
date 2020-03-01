@@ -47,17 +47,17 @@ public class HomeworkThree {
         rnd = new Random();
 
         final int SHOTS = 3;
-        final int minVal = 0;
-        final int maxVal = 9;
+        final int VALUE_MIN = 0;
+        final int VALUE_MAX = 9;
         char gameRepeat;
 
         do {
-            int computerNumber = rnd.nextInt(maxVal + 1 - minVal) + minVal;
+            int computerNumber = rnd.nextInt(VALUE_MAX + 1 - VALUE_MIN) + VALUE_MIN;
             int userNumber;
             boolean isWinner = false;
 
             for (int i = 1; i <= SHOTS; i++) {
-                System.out.printf("Shot %d. Guess the number %d...%d: ", i, minVal, maxVal);
+                System.out.printf("Shot %d. Guess the number %d...%d: ", i, VALUE_MIN, VALUE_MAX);
                 while (!sc.hasNextInt()) {
                     System.out.print("It's not a number. Enter a number: ");
                     sc.next();
