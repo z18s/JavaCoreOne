@@ -47,24 +47,24 @@ public class HomeworkThree {
         rnd = new Random();
 
         final int SHOTS = 3;
+        final int minVal = 0;
+        final int maxVal = 9;
         char gameRepeat;
 
         do {
-            int computerNumber = rnd.nextInt(10);
+            int computerNumber = rnd.nextInt(maxVal + 1 - minVal) + minVal;
             int userNumber;
             boolean isWinner = false;
 
             for (int i = 1; i <= SHOTS; i++) {
-                System.out.printf("Shot %d. ", i);
-                System.out.print("Guess the number 0...9: ");
+                System.out.printf("Shot %d. Guess the number %d...%d: ", i, minVal, maxVal);
                 while (!sc.hasNextInt()) {
                     System.out.print("It's not a number. Enter a number: ");
                     sc.next();
                 }
                 userNumber = sc.nextInt();
                 if (userNumber == computerNumber) {
-                    System.out.println("YOU WIN! The number is «" + computerNumber + "».");
-                    System.out.println();
+                    System.out.printf("YOU WIN! The number is «%d».\n\n", computerNumber);
                     isWinner = true;
                     break;
                 }
@@ -77,10 +77,9 @@ public class HomeworkThree {
             }
 
             if (!isWinner) {
-                System.out.println("YOU LOSE! The number was «" + computerNumber + "».");
+                System.out.printf("YOU LOSE! The number was «%d».\n\n", computerNumber);
             }
 
-            System.out.println();
             System.out.print("Repeat the game? (y/n): ");
             gameRepeat = sc.next().charAt(0);
             System.out.println();
@@ -95,13 +94,15 @@ public class HomeworkThree {
                 "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea",
                 "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
 
-        String computerWord = words[rnd.nextInt(25)];
+        String computerWord = words[rnd.nextInt(words.length)];
         String userWord;
 
         char[] shownWord = new char[15];
         Arrays.fill(shownWord, '*');
 
         boolean isWinner = false;
+
+        System.out.println("We have words: " + String.join(", ", words));
 
         do {
             System.out.println(shownWord);
@@ -110,7 +111,7 @@ public class HomeworkThree {
             System.out.println();
 
             if (userWord.equals(computerWord)) {
-                System.out.println("YOU WIN! It's «" + computerWord + "».");
+                System.out.printf("YOU WIN! It's «%s».\n\n", computerWord);
                 isWinner = true;
             } else {
                 int minLength = Math.min(userWord.length(), computerWord.length());
