@@ -57,6 +57,9 @@ public class TicTacToe {
                 break;
             }
         }
+        scan.close();
+        System.out.println();
+        System.out.println("----THE END----");
     }
 
     // Отрисовка поля
@@ -195,7 +198,7 @@ public class TicTacToe {
 
     // Ход программы
     private static void machineTurn(char[][] field) {
-        System.out.print("Machine's turn: ");
+        System.out.println("Machine's turn:");
         boolean isNotAlertTurn = true;
         if (isWinAlert) {
             isNotAlertTurn = machineAlertTurn(field);
@@ -208,7 +211,7 @@ public class TicTacToe {
                 machineTurnColumn = rnd.nextInt(field.length);
             } while (isOccupiedCell(field, machineTurnRow, machineTurnColumn, false));
             field[machineTurnRow][machineTurnColumn] = MARK_MACHINE;
-            System.out.printf("%d  %d.\n", machineTurnRow + 1, machineTurnColumn + 1);
+            System.out.printf("%d\n%d\n", machineTurnRow + 1, machineTurnColumn + 1);
         }
 
         paintField(field);
@@ -287,7 +290,7 @@ public class TicTacToe {
             return true;
         } else {
             field[machineTurnRow][machineTurnColumn] = MARK_MACHINE;
-            System.out.printf("%d  %d.\n", machineTurnRow + 1, machineTurnColumn + 1);
+            System.out.printf("%d\n%d\n", machineTurnRow + 1, machineTurnColumn + 1);
             isWinAlert = false;
             return false;
         }
