@@ -33,7 +33,7 @@ public class TicTacToe {
             fieldSize = scan.hasNextInt() ? scan.nextInt() : FIELD_MIN;
         } while (fieldSize < FIELD_MIN || fieldSize > FIELD_MAX);
 
-        winSequence = (fieldSize < 7) ? (2 + fieldSize / 2): 5;
+        winSequence = (fieldSize < 7) ? (2 + fieldSize / 2) : 5;
         alertSequence = winSequence - 1;
 
         char[][] field = new char[fieldSize][fieldSize];
@@ -218,22 +218,30 @@ public class TicTacToe {
         int machineTurnRow = -1;
         int machineTurnColumn = -1;
         char[] arrTempC = new char[winSequence];
+        int tempY;
+        int tempX;
+        int alertY = lineAlertArr[0];
+        int alertX = lineAlertArr[1];
         // Проверка, что alert пришёл из строки
-        if (lineAlertArr[0] != -1 && lineAlertArr[1] != -1) {
+        if (alertY != -1 && alertX != -1) {
             for (int i = 0; i < winSequence; i++) {
-                arrTempC[i] = field[lineAlertArr[0]][lineAlertArr[1] + i];
+                tempY = alertY;
+                tempX = alertX + i;
+                arrTempC[i] = field[tempY][tempX];
                 if (arrTempC[i] != MARK_USER) {
-                    machineTurnRow = lineAlertArr[0];
-                    machineTurnColumn = lineAlertArr[1] + i;
+                    machineTurnRow = tempY;
+                    machineTurnColumn = tempX;
                 }
             }
-            // Проверка, что alert пришёл из столбца
+            // Проверка, что alert пришёл из столбца, если не из строки
             if (!checkWinAlert(arrTempC)) {
                 for (int i = 0; i < winSequence; i++) {
-                    arrTempC[i] = field[lineAlertArr[1] + i][lineAlertArr[0]];
+                    tempY = alertX + i;
+                    tempX = alertY;
+                    arrTempC[i] = field[tempY][tempX];
                     if (arrTempC[i] != MARK_USER) {
-                        machineTurnRow = lineAlertArr[1] + i;
-                        machineTurnColumn = lineAlertArr[0];
+                        machineTurnRow = tempY;
+                        machineTurnColumn = tempX;
                     }
                 }
             }
@@ -242,22 +250,28 @@ public class TicTacToe {
             lineAlertArr[1] = -1;
         }
 
+        alertY = diagAlertArr[0];
+        alertX = diagAlertArr[1];
         // Проверка, что alert пришёл из диагонали
-        if (diagAlertArr[0] != -1 && diagAlertArr[1] != -1) {
+        if (alertY != -1 && alertX != -1) {
             for (int i = 0; i < winSequence; i++) {
-                arrTempC[i] = field[diagAlertArr[0] + i][diagAlertArr[1] + i];
+                tempY = alertY + i;
+                tempX = alertX + i;
+                arrTempC[i] = field[tempY][tempX];
                 if (arrTempC[i] != MARK_USER) {
-                    machineTurnRow = diagAlertArr[0] + i;
-                    machineTurnColumn = diagAlertArr[1] + i;
+                    machineTurnRow = tempY;
+                    machineTurnColumn = tempX;
                 }
             }
-            // Проверка, что alert пришёл из обратной диагонали
+            // Проверка, что alert пришёл из обратной диагонали, если не из прямой
             if (!checkWinAlert(arrTempC)) {
                 for (int i = 0; i < winSequence; i++) {
-                    arrTempC[i] = field[diagAlertArr[0] + i][diagAlertArr[1] + winSequence - 1 - i];
+                    tempY = alertY + i;
+                    tempX = alertX + winSequence - 1 - i;
+                    arrTempC[i] = field[tempY][tempX];
                     if (arrTempC[i] != MARK_USER) {
-                        machineTurnRow = diagAlertArr[0] + i;
-                        machineTurnColumn = diagAlertArr[1] + winSequence - 1 - i;
+                        machineTurnRow = tempY;
+                        machineTurnColumn = tempX;
                     }
                 }
             }
