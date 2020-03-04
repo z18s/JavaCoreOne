@@ -13,6 +13,13 @@ public class TicTacToe {
     public static boolean isWinner = false;
     public static boolean isWinAlert = false;
 
+    public static int fieldSize;
+    public static final int FIELD_MIN = 3;
+    public static final int FIELD_MAX = 10;
+
+    public static int winSequence;
+    public static int alertSequence;
+
     public static int[] lineAlertArr = new int[]{-1, -1};
     public static int[] diagAlertArr = new int[]{-1, -1};
 
@@ -21,16 +28,13 @@ public class TicTacToe {
 
     public static void main(String[] args) {
 
-        final int FIELD_MIN = 3;
-        final int FIELD_MAX = 10;
-        int fieldSize;
         do {
             System.out.printf("Enter a field size %d...%d: ", FIELD_MIN, FIELD_MAX);
             fieldSize = scan.hasNextInt() ? scan.nextInt() : FIELD_MIN;
         } while (fieldSize < FIELD_MIN || fieldSize > FIELD_MAX);
 
-        int winSequence = 2 + fieldSize / 3;
-        int alertSequence = winSequence - 1;
+        winSequence = (fieldSize < 7) ? (2 + fieldSize / 2): 5;
+        alertSequence = winSequence - 1;
 
         char[][] field = new char[fieldSize][fieldSize];
         for (char[] row : field) {
@@ -43,13 +47,13 @@ public class TicTacToe {
 
             userTurn(field);
 
-            if (checkTheEnd(field, winSequence, alertSequence)) {
+            if (checkTheEnd(field)) {
                 break;
             }
 
-            machineTurn(field, alertSequence);
+            machineTurn(field);
 
-            if (checkTheEnd(field, winSequence, alertSequence)) {
+            if (checkTheEnd(field)) {
                 break;
             }
         }
@@ -73,8 +77,8 @@ public class TicTacToe {
     }
 
     // Конец игры
-    private static boolean checkTheEnd(char[][] field, int winSequence, int alertSequence) {
-        if (checkWinner(field, winSequence, alertSequence)) {
+    private static boolean checkTheEnd(char[][] field) {
+        if (checkWinner(field)) {
             if (isWinner) {
                 System.out.println("YOU WIN!");
             } else {
@@ -102,7 +106,7 @@ public class TicTacToe {
     }
 
     // Проверка на победу
-    private static boolean checkWinner(char[][] field, int winSequence, int alertSequence) {
+    private static boolean checkWinner(char[][] field) {
 
         char[] arrUserWin = new char[winSequence];
         Arrays.fill(arrUserWin, MARK_USER);
@@ -129,7 +133,7 @@ public class TicTacToe {
                     isWinner = false;
                     return true;
                 }
-                if (checkWinAlert(arrTempA, alertSequence) || checkWinAlert(arrTempB, alertSequence)) {
+                if (checkWinAlert(arrTempA) || checkWinAlert(arrTempB)) {
                     isWinAlert = true;
                     lineAlertArr[0] = i;
                     lineAlertArr[1] = j;
@@ -152,7 +156,7 @@ public class TicTacToe {
                     isWinner = false;
                     return true;
                 }
-                if (checkWinAlert(arrTempA, alertSequence) || checkWinAlert(arrTempB, alertSequence)) {
+                if (checkWinAlert(arrTempA) || checkWinAlert(arrTempB)) {
                     isWinAlert = true;
                     diagAlertArr[0] = i;
                     diagAlertArr[1] = j;
@@ -163,7 +167,7 @@ public class TicTacToe {
     }
 
     // Проверка на последний ход до победы игрока
-    public static boolean checkWinAlert(char[] arr, int alertSequence) {
+    public static boolean checkWinAlert(char[] arr) {
         int i = 0;
         for (char c : arr) {
             if (c == MARK_USER) {
@@ -190,11 +194,11 @@ public class TicTacToe {
     }
 
     // Ход программы
-    private static void machineTurn(char[][] field, int alertSequence) {
+    private static void machineTurn(char[][] field) {
         System.out.println("Machine's turn.");
         boolean isNotAlertTurn = true;
         if (isWinAlert) {
-            isNotAlertTurn = machineAlertTurn(field, alertSequence);
+            isNotAlertTurn = machineAlertTurn(field);
         }
         if (isNotAlertTurn) {
             int machineTurnRow;
@@ -210,13 +214,13 @@ public class TicTacToe {
     }
 
     // Ход программы, когда игроку остался один ход до победы
-    private static boolean machineAlertTurn(char[][] field, int alertSequence) {
+    private static boolean machineAlertTurn(char[][] field) {
         int machineTurnRow = -1;
         int machineTurnColumn = -1;
-        char[] arrTempC = new char[alertSequence + 1];
+        char[] arrTempC = new char[winSequence];
         // Проверка, что alert пришёл из строки
         if (lineAlertArr[0] != -1 && lineAlertArr[1] != -1) {
-            for (int i = 0; i < alertSequence + 1; i++) {
+            for (int i = 0; i < winSequence; i++) {
                 arrTempC[i] = field[lineAlertArr[0]][lineAlertArr[1] + i];
                 if (arrTempC[i] != MARK_USER) {
                     machineTurnRow = lineAlertArr[0];
@@ -224,8 +228,8 @@ public class TicTacToe {
                 }
             }
             // Проверка, что alert пришёл из столбца
-            if (!checkWinAlert(arrTempC, alertSequence)) {
-                for (int i = 0; i < alertSequence + 1; i++) {
+            if (!checkWinAlert(arrTempC)) {
+                for (int i = 0; i < winSequence; i++) {
                     arrTempC[i] = field[lineAlertArr[1] + i][lineAlertArr[0]];
                     if (arrTempC[i] != MARK_USER) {
                         machineTurnRow = lineAlertArr[1] + i;
@@ -240,7 +244,7 @@ public class TicTacToe {
 
         // Проверка, что alert пришёл из диагонали
         if (diagAlertArr[0] != -1 && diagAlertArr[1] != -1) {
-            for (int i = 0; i < alertSequence + 1; i++) {
+            for (int i = 0; i < winSequence; i++) {
                 arrTempC[i] = field[diagAlertArr[0] + i][diagAlertArr[1] + i];
                 if (arrTempC[i] != MARK_USER) {
                     machineTurnRow = diagAlertArr[0] + i;
@@ -248,12 +252,12 @@ public class TicTacToe {
                 }
             }
             // Проверка, что alert пришёл из обратной диагонали
-            if (!checkWinAlert(arrTempC, alertSequence)) {
-                for (int i = 0; i < alertSequence + 1; i++) {
-                    arrTempC[i] = field[diagAlertArr[0] + i][diagAlertArr[1] + alertSequence - i];
+            if (!checkWinAlert(arrTempC)) {
+                for (int i = 0; i < winSequence; i++) {
+                    arrTempC[i] = field[diagAlertArr[0] + i][diagAlertArr[1] + winSequence - 1 - i];
                     if (arrTempC[i] != MARK_USER) {
                         machineTurnRow = diagAlertArr[0] + i;
-                        machineTurnColumn = diagAlertArr[1] + alertSequence - i;
+                        machineTurnColumn = diagAlertArr[1] + winSequence - 1 - i;
                     }
                 }
             }
