@@ -25,28 +25,28 @@ public class Cat extends Animal {
 
     @Override
     public void run(int distance) {
-        if (distance <= this.runMax && distance > 0) {
-            System.out.printf("TRUE: Cat %s's run %d meters.%n", super.getName(), distance);
+        if (distance <= runMax && distance > 0) {
+            System.out.printf("TRUE: Cat %s has run %d meters.%n", super.getName(), distance);
         }
-        if (distance > this.runMax) {
-            System.out.printf("FALSE: Cat %s can't run more than %d meters.%n", super.getName(), this.runMax);
+        if (distance > runMax) {
+            System.out.printf("FALSE: Cat %s can't run more than %d meters.%n", super.getName(), runMax);
         }
     }
 
     @Override
     public void swim(int distance) {
-        if (distance > this.swimMax) {
+        if (distance > swimMax) {
             System.out.printf("FALSE: Cat %s can't swim.%n", super.getName());
         }
     }
 
     @Override
     public void jump(float height) {
-        if (height <= this.jumpMax && height > 0) {
-            System.out.printf("TRUE: Cat %s's jumped %.2f meters.%n", super.getName(), height);
+        if (height <= jumpMax && height > 0) {
+            System.out.printf("TRUE: Cat %s has jumped %.2f meters.%n", super.getName(), height);
         }
-        if (height > this.jumpMax) {
-            System.out.printf("FALSE: Cat %s can't jump more than %.2f meters.%n", super.getName(), this.jumpMax);
+        if (height > jumpMax) {
+            System.out.printf("FALSE: Cat %s can't jump more than %.2f meters.%n", super.getName(), jumpMax);
         }
     }
 

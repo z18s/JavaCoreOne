@@ -13,7 +13,7 @@ public class HomeworkSix {
 
         catOliver.info();
         catLucy.info();
-
+        System.out.println("-");
         dogOscar.info();
         dogCharlie.info();
 
@@ -21,7 +21,7 @@ public class HomeworkSix {
 
         catOliver.run(250);
         catLucy.run(180);
-
+        System.out.println("-");
         dogOscar.run(600);
         dogCharlie.run(300);
 
@@ -29,7 +29,7 @@ public class HomeworkSix {
 
         catOliver.swim(2);
         catLucy.swim(5);
-
+        System.out.println("-");
         dogOscar.swim(15);
         dogCharlie.swim(8);
 
@@ -37,7 +37,7 @@ public class HomeworkSix {
 
         catOliver.jump(1.5f);
         catLucy.jump(2.6f);
-
+        System.out.println("-");
         dogOscar.jump(0.5f);
         dogCharlie.jump(0.9f);
 

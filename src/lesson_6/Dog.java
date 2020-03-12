@@ -26,7 +26,7 @@ public class Dog extends Animal {
     @Override
     public void run(int distance) {
         if (distance <= this.runMax && distance > 0) {
-            System.out.printf("TRUE: Dog %s's run %d meters.%n", super.getName(), distance);
+            System.out.printf("TRUE: Dog %s has run %d meters.%n", super.getName(), distance);
         }
         if (distance > this.runMax) {
             System.out.printf("FALSE: Dog %s can't run more than %d meters.%n", super.getName(), this.runMax);
@@ -36,7 +36,7 @@ public class Dog extends Animal {
     @Override
     public void swim(int distance) {
         if (distance <= this.swimMax && distance > 0) {
-            System.out.printf("TRUE: Dog %s's run %d meters.%n", super.getName(), distance);
+            System.out.printf("TRUE: Dog %s has run %d meters.%n", super.getName(), distance);
         }
         if (distance > this.swimMax) {
             System.out.printf("FALSE: Dog %s can't run more than %d meters.%n", super.getName(), this.swimMax);
@@ -46,7 +46,7 @@ public class Dog extends Animal {
     @Override
     public void jump(float height) {
         if (height <= this.jumpMax && height > 0) {
-            System.out.printf("TRUE: Dog %s's jumped %.2f meters.%n", super.getName(), height);
+            System.out.printf("TRUE: Dog %s has jumped %.2f meters.%n", super.getName(), height);
         }
         if (height > this.jumpMax) {
             System.out.printf("FALSE: Dog %s can't jump more than %.2f meters.%n", super.getName(), this.jumpMax);
