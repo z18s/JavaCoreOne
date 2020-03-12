@@ -1,34 +1,57 @@
 package lesson_6;
 
 public class Cat extends Animal {
-    String color;
-
-    private final int RUN_MAX = 200;
-    private final int SWIM_MAX = 0;
+    private String color;
+    private int runMax;
+    private int swimMax;
+    private float jumpMax;
 
     static int catCounter = 0;
 
+    {   // Instance Initializer
+        // от 150 м до 250 м
+        runMax = (int) (Math.random() * 100 + 1) + 150;
+        // 0
+        swimMax = 0;
+        // от 1.5 м до 2.5 м
+        jumpMax = (float) (Math.random()) + 1.5f;
+    }
+
     public Cat(String name, String color) {
-        this.name = name;
+        super(name);
         this.color = color;
         catCounter++;
     }
 
-    public void catInfo() {
-        System.out.printf("%s is a cat and its color is %s.\n", name, color);
-    }
-
-    public void run(int length) {
-        if (length > RUN_MAX) {
-            System.out.printf("%s can't run more then %d meters, because it's a cat.\n", this.name, RUN_MAX);
-        } else {
-            super.run(length);
+    @Override
+    public void run(int distance) {
+        if (distance <= this.runMax && distance > 0) {
+            System.out.printf("TRUE: Cat %s's run %d meters.%n", super.getName(), distance);
+        }
+        if (distance > this.runMax) {
+            System.out.printf("FALSE: Cat %s can't run more than %d meters.%n", super.getName(), this.runMax);
         }
     }
 
-    public void swim(int length) {
-        if (length > SWIM_MAX) {
-            System.out.printf("%s can't swim, because It's a cat.\n", this.name);
+    @Override
+    public void swim(int distance) {
+        if (distance > this.swimMax) {
+            System.out.printf("FALSE: Cat %s can't swim.%n", super.getName());
         }
+    }
+
+    @Override
+    public void jump(float height) {
+        if (height <= this.jumpMax && height > 0) {
+            System.out.printf("TRUE: Cat %s's jumped %.2f meters.%n", super.getName(), height);
+        }
+        if (height > this.jumpMax) {
+            System.out.printf("FALSE: Cat %s can't jump more than %.2f meters.%n", super.getName(), this.jumpMax);
+        }
+    }
+
+    @Override
+    public void info() {
+        System.out.printf("INFO: %s is a cat and its color is %s.%n", super.getName(), color);
     }
 }

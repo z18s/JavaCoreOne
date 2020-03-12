@@ -1,28 +1,24 @@
 package lesson_6;
 
-public class Animal {
-    String name;
-
-    static int animalCounter = 0;
+public abstract class Animal {
+    private String name;
 
     public Animal(String name) {
+        super();
         this.name = name;
-        animalCounter++;
     }
 
-    public Animal() {
-        this("Noname");
+    public String getName() {
+        return name;
     }
 
-    public void animalInfo() {
-        System.out.printf("%s is an animal.\n", name);
-    }
+    public abstract void run(int distance);
 
-    public void run(int length) {
-        System.out.printf("%s has run %d meters.\n", this.name ,length);
-    }
+    public abstract void swim(int distance);
 
-    public void swim(int length) {
-        System.out.printf("%s has swum %d meters.\n", this.name, length);
+    public abstract void jump(float height);
+
+    public void info() {
+        System.out.printf("%s is an animal.%n", name);
     }
 }

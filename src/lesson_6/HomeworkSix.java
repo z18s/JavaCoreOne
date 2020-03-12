@@ -3,10 +3,6 @@ package lesson_6;
 public class HomeworkSix {
     public static void main(String[] args) {
 
-        Animal animalBob = new Animal("Bob");
-        Animal animalMia = new Animal("Mia");
-        Animal animal = new Animal();
-
         Cat catOliver = new Cat("Oliver", "red");
         Cat catLucy = new Cat("Lucy", "black");
 
@@ -15,49 +11,38 @@ public class HomeworkSix {
 
         // Вывод
 
-        System.out.println("  Animals:");
-        animalBob.animalInfo();
-        animalMia.animalInfo();
-        animal.animalInfo();
+        catOliver.info();
+        catLucy.info();
 
-        System.out.println("  Cats:");
-        catOliver.catInfo();
-        catLucy.animalInfo();
-
-        System.out.println("  Dogs:");
-        dogOscar.animalInfo();
-        dogCharlie.dogInfo();
+        dogOscar.info();
+        dogCharlie.info();
 
         System.out.println("----------");
 
-        System.out.println("  Animals:");
-        animalBob.run(900);
-
-        System.out.println("  Cats:");
-        catOliver.run(300);
+        catOliver.run(250);
         catLucy.run(180);
 
-        System.out.println("  Dogs:");
-        dogOscar.run(400);
-        dogCharlie.run(600);
+        dogOscar.run(600);
+        dogCharlie.run(300);
 
         System.out.println("----------");
 
-        System.out.println("  Animals:");
-        animalMia.swim(260);
-
-        System.out.println("  Cats:");
         catOliver.swim(2);
-        catLucy.swim(30);
+        catLucy.swim(5);
 
-        System.out.println("  Dogs:");
         dogOscar.swim(15);
         dogCharlie.swim(8);
 
         System.out.println("----------");
 
-        System.out.printf("We have %d cats, %d dogs and %d other animals - %d animals total.\n",
-                          Cat.catCounter, Dog.dogCounter,
-                          Animal.animalCounter - (Cat.catCounter + Dog.dogCounter), Animal.animalCounter);
+        catOliver.jump(1.5f);
+        catLucy.jump(2.6f);
+
+        dogOscar.jump(0.5f);
+        dogCharlie.jump(0.9f);
+
+        System.out.println("----------");
+
+        System.out.printf("We have %d cats and %d dogs.%n", Cat.catCounter, Dog.dogCounter);
     }
 }
