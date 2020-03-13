@@ -10,11 +10,11 @@ public class Dog extends Animal {
 
     {   // Instance Initializer
         // от 400 м до 600 м
-        runMax = (int) (Math.random() * 200 + 1) + 400;
+        runMax = 400 + (int) (Math.random() * 200 + 1);
         // от 7 м до 15 м
-        swimMax = (int) (Math.random() * 8 + 1) + 7;
+        swimMax = 7 + (int) (Math.random() * 8 + 1);
         // от 0.4 м до 0.7 м
-        jumpMax = (float) (Math.random() * 0.3) + 0.4f;
+        jumpMax = 0.4f + (float) (Math.random() * 0.3);
     }
 
     public Dog(String name, int age) {

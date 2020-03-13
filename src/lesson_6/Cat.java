@@ -10,11 +10,11 @@ public class Cat extends Animal {
 
     {   // Instance Initializer
         // от 150 м до 250 м
-        runMax = (int) (Math.random() * 100 + 1) + 150;
+        runMax = 150 + (int) (Math.random() * 100 + 1);
         // 0
         swimMax = 0;
         // от 1.5 м до 2.5 м
-        jumpMax = (float) (Math.random()) + 1.5f;
+        jumpMax = 1.5f + (float) (Math.random());
     }
 
     public Cat(String name, String color) {
