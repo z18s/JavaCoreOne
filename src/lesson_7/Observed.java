@@ -2,9 +2,7 @@ package lesson_7;
 
 import java.util.Vector;
 
-/**
- * java.util.Observable
- */
+/* java.util.Observable */
 
 @Deprecated(since = "9")
 public class Observed {

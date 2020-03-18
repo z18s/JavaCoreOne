@@ -33,9 +33,7 @@ public class Plate extends Observed {
 
     @Override
     public String toString() {
-        return "Plate{" +
-                "food=" + food +
-                '}';
+        return "Plate{" + "food=" + food + '}';
     }
 
     // Добавление котов пачкой через класс Observed
@@ -50,7 +48,7 @@ public class Plate extends Observed {
     public void foodNotifier() {
         if (food > 0) {
             setChanged();
-            notifyObservers(food);
+            notifyObservers();
         }
     }
 }

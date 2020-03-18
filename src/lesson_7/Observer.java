@@ -1,8 +1,6 @@
 package lesson_7;
 
-/**
- * java.util.Observer
- */
+/* java.util.Observer */
 
 @Deprecated(since = "9")
 public interface Observer {
