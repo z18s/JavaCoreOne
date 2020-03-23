@@ -1,7 +1,7 @@
 package lesson_7;
 
  public class HomeworkSeven {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Cat catBob = new Cat("Bob", 6);
         Cat catOliver = new Cat("Oliver", 8);
@@ -16,14 +16,17 @@ package lesson_7;
         plate.info();
 
         System.out.println("-----");
+        Thread.sleep(2000);
 
         plate.addFood(10);
 
         System.out.println("-----");
+        Thread.sleep(2000);
 
         plate.addFood(10);
 
         System.out.println("-----");
+        Thread.sleep(2000);
 
         catBob.info();
         catOliver.info();

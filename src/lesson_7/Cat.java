@@ -45,9 +45,10 @@ public class Cat implements Observer {
     }
 
     @Override
-    public void update(Observed o, Object arr) {
+    public void update(Observed o, Object arr) throws InterruptedException {
         if (appetiteNow < appetiteMax) {
             eat((Plate) o);
+            Thread.sleep(1000);
         }
     }
 }

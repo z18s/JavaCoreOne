@@ -26,11 +26,11 @@ public class Observed {
         obs.removeElement(o);
     }
 
-    public void notifyObservers() {
+    public void notifyObservers() throws InterruptedException {
         notifyObservers(null);
     }
 
-    public void notifyObservers(Object arg) {
+    public void notifyObservers(Object arg) throws InterruptedException {
         Object[] arrLocal;
 
         synchronized (this) {

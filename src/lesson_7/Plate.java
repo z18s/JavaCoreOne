@@ -16,7 +16,7 @@ public class Plate extends Observed {
         return food;
     }
 
-    public void addFood(int food) {
+    public void addFood(int food) throws InterruptedException {
         this.food += food;
         System.out.printf("%d food added.%n", food);
         info();
@@ -37,7 +37,7 @@ public class Plate extends Observed {
     }
 
     // Добавление котов пачкой через класс Observed
-    public void addObservers(Cat... cats) {
+    public void addObservers(Cat... cats) throws InterruptedException {
         for (Cat cat : cats) {
             super.addObserver(cat);
         }
@@ -45,7 +45,7 @@ public class Plate extends Observed {
     }
 
     // Уведомление о наличие еды через класс Observed
-    public void foodNotifier() {
+    public void foodNotifier() throws InterruptedException {
         if (food > 0) {
             setChanged();
             notifyObservers();

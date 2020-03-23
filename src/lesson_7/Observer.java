@@ -5,6 +5,6 @@ package lesson_7;
 @Deprecated(since = "9")
 public interface Observer {
 
-    void update(Observed o, Object arg);
+    void update(Observed o, Object arg) throws InterruptedException;
 
 }
